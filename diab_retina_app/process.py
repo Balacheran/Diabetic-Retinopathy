@@ -76,7 +76,7 @@ def process_img(img):
     plt.title('Diabetic Retinopathy')
 
     # function to show the plot
-    plt.savefig(os.path.dirname(__file__) + '/output/graph.png')
+    plt.savefig(os.path.dirname(__file__) + '../static/graph.png')
     plt.show()
     result = []
 
