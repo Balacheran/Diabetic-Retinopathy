@@ -22,3 +22,4 @@ urlpatterns = [
     path('', views.display),
     path('api/', views.process_image)
 ]
+urlpatterns+= static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
