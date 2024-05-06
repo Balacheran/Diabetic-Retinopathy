@@ -1,0 +1,21 @@
+databases:
+  - name: diabetic_retinopathydb
+    plan: free
+    databaseName: diabetic_retinopathy
+    user: mysite
+
+services:
+  - type: web
+    plan: free
+    name: diabetic_retinopathy
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "python -m gunicorn diabetic_retinopathy.asgi:application -k uvicorn.workers.UvicornWorker"    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: diabetic_retinopathydb
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
